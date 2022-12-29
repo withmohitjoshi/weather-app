@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkweather_app=self.webpackChunkweather_app||[]).push([[970],{970:function(e,s,a){e.exports=a.p+"static/media/showers-night.86d5570e13c926b05b8a.svg"}}]);

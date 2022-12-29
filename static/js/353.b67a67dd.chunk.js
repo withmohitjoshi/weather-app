@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkweather_app=self.webpackChunkweather_app||[]).push([[353],{353:function(e,a,s){e.exports=s.p+"static/media/showers-day.4a2b8451b8315b4993a1.svg"}}]);
