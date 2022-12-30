@@ -1,7 +1,12 @@
-import { UilSearch } from "@iconscout/react-unicons";
+import { UilSearch, UilMapMarker } from "@iconscout/react-unicons";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchDataAndSetState } from "../utils/fetchDataAndSetState";
+import {
+  getWeatherDataByCityName,
+  getWeatherDataByCoord,
+} from "../services/getWeatherData";
+import { getLocationPermission } from "../utils/getLocationPermission";
 const SearchWeather = () => {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
@@ -20,9 +25,35 @@ const SearchWeather = () => {
       />
       <button
         type={"submit"}
-        onClick={() => query && fetchDataAndSetState(dispatch, query)}
+        onClick={() =>
+          query &&
+          fetchDataAndSetState({
+            callback: getWeatherDataByCityName,
+            dispatch,
+            cityName: query,
+          })
+        }
       >
         <UilSearch />
+      </button>
+      <button
+        onClick={() => {
+          if (navigator.geolocation) {
+            getLocationPermission()
+              .then(({ latitude, longitude }) => {
+                fetchDataAndSetState({
+                  callback: getWeatherDataByCoord,
+                  dispatch,
+                  coords: { latitude, longitude },
+                });
+              })
+              .catch(alert);
+          } else {
+            alert("Device Doesn't Support GeoLocation");
+          }
+        }}
+      >
+        <UilMapMarker />
       </button>
     </form>
   );

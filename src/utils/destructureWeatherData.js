@@ -1,8 +1,9 @@
-export const destructureWeatherData = (data1, data2) => {
+export const destructureWeatherData = (data1, data2, dataGetBy) => {
   const cityName = data1.name;
   const coord = data1.coord;
   const country = data1.sys.country;
-  const completeAddress = data2.resolvedAddress;
+  const completeAddress =
+    dataGetBy === "byCityName" ? data2.resolvedAddress : "Current Location";
   const currentWeatherData = {
     temp: data1.main.temp,
     feelsLike: data1.main.feels_like,
