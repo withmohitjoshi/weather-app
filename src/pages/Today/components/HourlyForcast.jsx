@@ -15,9 +15,9 @@ const HourlyForcast = ({ todayHourlyData }) => {
               key={i}
             >
               <p className="w-max">{time}</p>
-              <RenderIcon icon={icon} className="w-10" />
-              <p className="text-gray-300">{icon.split("-").join(" ")}</p>
-              <p className="text-[1rem]">{temp.toFixed()}&deg;C</p>
+              <RenderIcon icon={icon} className="w-10 aspect-square" />
+              <p className="text-gray-300 w-min">{icon.split("-").join(" ")}</p>
+              <p className="text-[1rem] w-max">{temp.toFixed()}&deg;C</p>
             </div>
           );
         })}

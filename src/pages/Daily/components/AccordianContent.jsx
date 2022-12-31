@@ -57,14 +57,14 @@ const AccordianContent = ({
         {dailyHourlyData.map(({ datetimeEpoch, icon, temp }, i) => {
           return (
             <div
-              className="flex items-center flex-col gap-2 text-xs sm:text-[0.9rem]"
+              className="flex items-center justify-between flex-col gap-2 text-xs sm:text-[0.9rem]"
               key={i}
             >
               <p className="w-max font-medium ">
                 {createDateTime(datetimeEpoch, DateTime.TIME_SIMPLE)}
               </p>
               <RenderIcon icon={icon} className="w-6 sm:w-8" />
-              <p className="text-gray-400">{temp.toFixed()}&deg; C</p>
+              <p className="w-max text-gray-400">{temp.toFixed()}&deg; C</p>
             </div>
           );
         })}
