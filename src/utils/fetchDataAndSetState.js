@@ -21,8 +21,13 @@ export const fetchDataAndSetState = ({
       dispatch(setWeatherData(weatherDataObject));
     })
     .catch((error) => {
+      console.log("error is ", error);
       dispatch(
-        setError(error.response ? error.response.data.message : error.message)
+        setError(
+          error.response.data.message ||
+          error.message ||
+          "something went wrong try again"
+        )
       );
     });
 };
